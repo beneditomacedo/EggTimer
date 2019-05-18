@@ -40,7 +40,6 @@ class ViewController: UIViewController {
             counter -= 10
         } else {
             counter = 0
-            timer.invalidate()
         }
     }
     
