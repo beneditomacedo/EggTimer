@@ -20,9 +20,13 @@ class ViewController: UIViewController {
     
     @IBAction func startTimer(_ sender: Any) {
 
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,
-                                     selector: #selector(ViewController.processTimer),
-                                     userInfo: nil, repeats: true)
+        // Only start a timer if there no timer active
+        //
+        if !(timer.isValid) {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self,
+                                         selector: #selector(ViewController.processTimer),
+                                         userInfo: nil, repeats: true)
+        }
     }
     
     @objc func processTimer() {
@@ -49,6 +53,7 @@ class ViewController: UIViewController {
     
     @IBAction func resetTimer(_ sender: Any) {
         counter = 210
+        counterTimer.text = String(counter)
     }
     
     override func viewDidLoad() {
